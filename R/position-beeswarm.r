@@ -21,8 +21,8 @@
 #' # here use beeswarm "corral" parameter to control
 #' # overlapping points
 #' qplot(class, hwy, data = mpg, position=position_beeswarm(corral="wrap")) + geom_boxplot()
-position_beeswarm <- function (method = NULL, corral = NULL) { 
-  PositionBeeswarm$new(width = method, height = corral)
+position_beeswarm <- function (method = NULL, corral = NULL, extra = NULL) { 
+  PositionBeeswarm$new(width = method, height = corral, extra = extra)
 }
 
 PositionBeeswarm <- proto(Position, {
@@ -34,13 +34,16 @@ PositionBeeswarm <- proto(Position, {
     
     if (is.null(.$width)) .$width <- "swarm"
     if (is.null(.$height)) .$height <- "none"
+
+    if (is.null(.$extra) || is.null(.$extra["cex"])) cex <- 1
+    else cex <- .$extra["cex"]
     
     x <- data$x
     y <- data$y
 
     try_require("beeswarm")
 
-    bs <- beeswarm(y~x, method=.$width, corral=.$height, do.plot=F, cex=4)
+    bs <- beeswarm(y~x, method=.$width, corral=.$height, do.plot=F, cex=cex)
 
     data$x <- bs[,1]
     data$y <- bs[,2]

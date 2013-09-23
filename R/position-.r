@@ -8,8 +8,9 @@ Position <- proto(TopLevel, expr = {
   
   width <- NULL
   height <- NULL
-  new <- function(., width = NULL, height = NULL, ...) {
-    .$proto(width = width, height = height, ...)
+  extra <- NULL
+  new <- function(., width = NULL, height = NULL, extra = NULL) {
+    .$proto(width = width, height = height, extra = extra)
   }
 
   parameters <- function(.) {
