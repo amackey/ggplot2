@@ -35,8 +35,8 @@ PositionBeeswarm <- proto(Position, {
     if (is.null(.$width)) .$width <- "swarm"
     if (is.null(.$height)) .$height <- "none"
 
-    if (is.null(.$extra) || is.null(.$extra["cex"])) cex <- 1
-    else cex <- .$extra["cex"]
+    if (is.null(.$extra) || is.null(.$extra$cex)) cex <- 1
+    else cex <- .$extra$cex
     
     x <- data$x
     y <- data$y
