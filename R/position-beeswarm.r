@@ -39,6 +39,8 @@ PositionBeeswarm <- proto(Position, {
     y <- data$y
 
     try_require("beeswarm")
+
+    dput(data)
     bs <- beeswarm(y~x, method=.$width, corral=.$height, do.plot=F)
 
     data$x <- bs[,1]
