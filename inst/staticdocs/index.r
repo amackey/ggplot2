@@ -131,7 +131,8 @@ list(
         "position_fill",
         "position_identity",
         "position_stack",
-        "position_jitter"
+        "position_jitter",
+	"position_beeswarm"
       )
     ),
     sd_section("Data", 
@@ -455,6 +456,7 @@ list(
         gp = gpar(col = "grey60", fill = c('#804070', '#668040')), vjust = 1) 
     }),
     position_jitter = sd_icon(inherit = "geom_jitter" ),
+    position_beeswarm = sd_icon(inherit = "position_jitter" ),
     position_stack = sd_icon({
       y <- c(0.5, 0.8)
       rectGrob(0.5, c(0.5, 0.8), width = 0.4, height = c(0.5, 0.3),
