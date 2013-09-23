@@ -35,15 +35,15 @@ PositionBeeswarm <- proto(Position, {
     if (is.null(.$width)) .$width <- "swarm"
     if (is.null(.$height)) .$height <- "none"
     
-    x <- data$x / 10
-    y <- data$y / 10
+    x <- data$x
+    y <- data$y
 
     try_require("beeswarm")
 
-    bs <- beeswarm(y~x, method=.$width, corral=.$height, do.plot=F)
+    bs <- beeswarm(y~x, method=.$width, corral=.$height, do.plot=F, cex=4)
 
-    data$x <- 10 * bs[,1]
-    data$y <- 10 * bs[,2]
+    data$x <- bs[,1]
+    data$y <- bs[,2]
 
     data
   }
